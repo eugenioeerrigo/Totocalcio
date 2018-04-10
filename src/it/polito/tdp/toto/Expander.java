@@ -3,11 +3,11 @@ package it.polito.tdp.toto;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Expander {
+public class Expander {                   //classe che contiene algoritmo di espansione
 	
-	private List<Schedina> soluzione ;
+	private List<Schedina> soluzione ; 
 
-	public List<Schedina> expand(Pronostico p) {
+	public List<Schedina> expand(Pronostico p) {                  //restituisce schedina ricevendo come parametro un pronostico - FUNZIONE CHE CHIAMA LA RICORSIONE
 		
 		soluzione = new ArrayList<Schedina>() ;
 		
@@ -16,7 +16,7 @@ public class Expander {
 		return soluzione;
 	}
 
-	private void cerca(Schedina parziale, Pronostico p, int livello) {
+	private void cerca(Schedina parziale, Pronostico p, int livello) {        //METODO RICORSIVO
 		
 		if(livello==p.getN()) {
 			// caso terminale => ho una soluzione completa
@@ -27,7 +27,7 @@ public class Expander {
 		Previsione mosse = p.get(livello) ;
 		for( Risultato mossa : mosse.getValori() ) {
 			parziale.add(mossa); // prova la soluzione
-			cerca(parziale, p, livello+1) ;
+			cerca(parziale, p, livello+1) ;                                  //ricorsione
 			parziale.removeLast(); // backtrack
 		}
 
